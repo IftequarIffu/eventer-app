@@ -1,6 +1,7 @@
 import React from "react";
 import H1 from "@/components/H1";
 import { EventType } from "@/lib/types";
+import EventsList from "@/components/EventsList";
 
 const EventsPage = async ({
   params: { city },
@@ -20,9 +21,7 @@ const EventsPage = async ({
           ? "All Events"
           : `Events in ${city.charAt(0).toUpperCase() + city.slice(1)}`}
       </H1>
-      {events.map((event) => (
-        <section key={event.id}>{event.name}</section>
-      ))}
+      <EventsList events={events} />
     </main>
   );
 };
