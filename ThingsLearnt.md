@@ -7,3 +7,10 @@
 - Use `usePathName()` hook to get the current path of the page. Eg: `/events/all`
 - To fetch data, on client components, you need to write fetch code in a `useEffect` hook. But, if you want to the same
   on server components, make that component `async`, directly write the fetch API call code in the body of the component.
+- When using `<Image>` from Next.js with custom height, use object-fit. Eg: `<Image
+      src={event.imageUrl}
+      alt={event.name}
+      height={280}
+      width={500}
+      className="h-[60%] object-fit"
+    />`
