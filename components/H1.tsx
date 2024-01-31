@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import React, { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -10,10 +11,7 @@ const H1 = ({
 }) => {
   return (
     <h1
-      className={twMerge(
-        "text-3xl lg:text-6xl font-bold tracking-tight",
-        className
-      )}
+      className={cn("text-3xl lg:text-6xl font-bold tracking-tight", className)}
     >
       {children}
     </h1>
