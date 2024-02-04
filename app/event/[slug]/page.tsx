@@ -50,7 +50,7 @@ const EventPage = async ({
             <button
               className="bg-white/10 text-lg capitalize lg:mt-auto 
             mt-5 w-[95vw] sm:w-full py-2 rounded-md border-white/90 
-            border-2 bg-blur hover:scale-105 focus:scale-105 active:scale-[1.02] transition"
+            border-2 bg-blur state-effects"
             >
               Get Tickets
             </button>
