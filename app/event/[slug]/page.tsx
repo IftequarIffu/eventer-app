@@ -57,7 +57,20 @@ const EventPage = async ({
           </div>
         </div>
       </section>
-      <div></div>
+      <div className="text-center px-5 py-16 min-h-75">
+        <section className="mb-12">
+          <h2 className="text-2xl mb-8">About this event</h2>
+          <p className="text-lg leading-8 text-white/75 max-w-4xl mx-auto">
+            {event.description}
+          </p>
+        </section>
+        <section>
+          <h2 className="text-2xl mb-8">Location</h2>
+          <p className="text-lg leading-8 text-white/75 max-w-4xl mx-auto">
+            {event.location}
+          </p>
+        </section>
+      </div>
     </main>
   );
 };
