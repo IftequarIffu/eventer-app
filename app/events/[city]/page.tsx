@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import H1 from "@/components/H1";
 import { EventType } from "@/lib/types";
 import EventsList from "@/components/EventsList";
+import Loading from "./loading";
 
 const EventsPage = async ({
   params: { city },
@@ -15,7 +16,9 @@ const EventsPage = async ({
           ? "All Events"
           : `Events in ${city.charAt(0).toUpperCase() + city.slice(1)}`}
       </H1>
-      <EventsList city={city} />
+      <Suspense fallback={<Loading />}>
+        <EventsList city={city} />
+      </Suspense>
     </main>
   );
 };
