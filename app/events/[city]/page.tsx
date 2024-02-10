@@ -8,12 +8,6 @@ const EventsPage = async ({
 }: {
   params: { city: string };
 }) => {
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`
-  );
-
-  const events: EventType[] = await response.json();
-
   return (
     <main className="flex flex-col items-center py-24 px-[20px] min-h-[100vh]">
       <H1 className="mb-28">
@@ -21,7 +15,7 @@ const EventsPage = async ({
           ? "All Events"
           : `Events in ${city.charAt(0).toUpperCase() + city.slice(1)}`}
       </H1>
-      <EventsList events={events} />
+      <EventsList city={city} />
     </main>
   );
 };
