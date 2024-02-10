@@ -8,11 +8,13 @@
 - To fetch data, on client components, you need to write fetch code in a `useEffect` hook. But, if you want to the same
   on server components, make that component `async`, directly write the fetch API call code in the body of the component.
 - When using `<Image>` from Next.js with custom height, use object-fit. Eg: `<Image
-    src={event.imageUrl}
-    alt={event.name}
-    height={280}
-    width={500}
-    className="h-[60%] object-fit"
-  />`
+  src={event.imageUrl}
+  alt={event.name}
+  height={280}
+  width={500}
+  className="h-[60%] object-fit"
+/>`
 - Tip: If you want to have an image, don't just have it in the app. Instead, have a blurred background of the same image
   and then have image over it. It makes the app looks much beautiful. To blur, see how it was done in `app/event/[slug]/page.tsx`
+- Move your API calls from the Page(page.tsx) to Component(EventsList.tsx) for better user experience and this also allows
+  us to use `<Suspense></Suspense>` for those components and other components on the page can be shown directly.
