@@ -10,7 +10,7 @@ export function generateMetadata({
   params: { city: string };
 }) {
   return {
-    title: `Events in ${capitalize(city)}`,
+    title: city === "all" ? "All Events" : `Events in ${capitalize(city)}`,
   };
 }
 
