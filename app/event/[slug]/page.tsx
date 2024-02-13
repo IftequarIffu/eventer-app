@@ -3,13 +3,18 @@ import Image from "next/image";
 import H1 from "@/components/H1";
 import { capitalize } from "@/lib/utils";
 
-export function generateMetadata({
+export async function generateMetadata({
   params: { slug },
 }: {
   params: { slug: string };
 }) {
+  const response = await fetch(
+    `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`
+  );
+
+  const event = await response.json();
   return {
-    title: `Event: ${capitalize(slug).replaceAll("-", " ")}`,
+    title: `Event: ${event.name}`,
   };
 }
 
