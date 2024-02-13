@@ -1,6 +1,17 @@
 import React from "react";
 import Image from "next/image";
 import H1 from "@/components/H1";
+import { capitalize } from "@/lib/utils";
+
+export function generateMetadata({
+  params: { slug },
+}: {
+  params: { slug: string };
+}) {
+  return {
+    title: `Event: ${capitalize(slug).replaceAll("-", " ")}`,
+  };
+}
 
 const EventPage = async ({
   params: { slug },
