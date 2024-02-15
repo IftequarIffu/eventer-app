@@ -18,3 +18,4 @@
   and then have image over it. It makes the app looks much beautiful. To blur, see how it was done in `app/event/[slug]/page.tsx`
 - Move your API calls from the Page(page.tsx) to Component(EventsList.tsx) for better user experience and this also allows
   us to use `<Suspense></Suspense>` for those components and other components on the page can be shown directly.
+- If you make an API call twice on the same page, React sends only one API call. So, we need not worry about performance.
