@@ -2,8 +2,9 @@ import { EventType } from "@/lib/types";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Event } from "@prisma/client";
 
-const EventCard = ({ event }: { event: EventType }) => {
+const EventCard = ({ event }: { event: Event }) => {
   return (
     <Link
       href={`/event/${event.slug}`}
