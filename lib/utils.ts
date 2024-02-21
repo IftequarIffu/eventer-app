@@ -13,7 +13,7 @@ export function capitalize(str: string) {
 export async function getEventsFromCity(city: string) {
   const events = await prisma.event.findMany({
     where: {
-      city: capitalize(city),
+      city: city === "all" ? undefined : capitalize(city),
     },
   });
 
