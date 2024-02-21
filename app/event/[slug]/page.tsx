@@ -1,20 +1,17 @@
 import React from "react";
 import Image from "next/image";
 import H1 from "@/components/H1";
-import { capitalize } from "@/lib/utils";
+import { getEventFromSlug } from "@/lib/utils";
 
 export async function generateMetadata({
   params: { slug },
 }: {
   params: { slug: string };
 }) {
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`
-  );
+  const event = await getEventFromSlug(slug);
 
-  const event = await response.json();
   return {
-    title: `Event: ${event.name}`,
+    title: `Event: ${event?.name}`,
   };
 }
 
@@ -23,11 +20,11 @@ const EventPage = async ({
 }: {
   params: { slug: string };
 }) => {
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`
-  );
+  const event = await getEventFromSlug(slug);
 
-  const event = await response.json();
+  if (event == null) {
+    return "Please wait";
+  }
 
   return (
     <main>
