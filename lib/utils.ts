@@ -1,6 +1,7 @@
 import clsx, { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import prisma from "./db";
+import { notFound } from "next/navigation";
 
 export function cn(...classes: ClassValue[]) {
   return twMerge(clsx(classes));
@@ -20,6 +21,10 @@ export async function getEventsFromCity(city: string) {
     },
   });
 
+  if (!events) {
+    return notFound();
+  }
+
   return events;
 }
 
@@ -29,6 +34,10 @@ export async function getEventFromSlug(slug: string) {
       slug: slug,
     },
   });
+
+  if (!event) {
+    return notFound();
+  }
 
   return event;
 }
