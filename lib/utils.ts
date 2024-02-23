@@ -11,7 +11,7 @@ export function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export async function getEventsFromCity(city: string) {
+export async function getEventsFromCity(city: string, page: number = 1) {
   const events = await prisma.event.findMany({
     where: {
       city: city === "all" ? undefined : capitalize(city),
@@ -19,13 +19,25 @@ export async function getEventsFromCity(city: string) {
     orderBy: {
       date: "asc",
     },
+    skip: (page - 1) * 6 || 0,
+    take: 6,
   });
 
-  if (!events) {
-    return notFound();
+  let totalCount;
+  if (city === "all") {
+    totalCount = await prisma.event.count();
+  } else {
+    totalCount = await prisma.event.count({
+      where: {
+        city: city === "all" ? undefined : capitalize(city),
+      },
+    });
   }
 
-  return events;
+  return {
+    events,
+    totalCount,
+  };
 }
 
 export async function getEventFromSlug(slug: string) {
