@@ -16,8 +16,10 @@ export function generateMetadata({
 
 const EventsPage = async ({
   params: { city },
+  searchParams: { page },
 }: {
   params: { city: string };
+  searchParams: { page: string };
 }) => {
   return (
     <main className="flex flex-col items-center py-24 px-[20px] min-h-[100vh]">
@@ -25,7 +27,14 @@ const EventsPage = async ({
         {city === "all" ? "All Events" : `Events in ${capitalize(city)}`}
       </H1>
       <Suspense fallback={<Loading />}>
-        <EventsList city={city} />
+        <EventsList
+          city={city}
+          page={
+            page == undefined || page == null || page == "0"
+              ? 1
+              : parseInt(page)
+          }
+        />
       </Suspense>
     </main>
   );
