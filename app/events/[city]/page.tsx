@@ -26,7 +26,7 @@ const EventsPage = async ({
       <H1 className="mb-28">
         {city === "all" ? "All Events" : `Events in ${capitalize(city)}`}
       </H1>
-      <Suspense fallback={<Loading />}>
+      <Suspense key={city + page} fallback={<Loading />}>
         <EventsList
           city={city}
           page={
