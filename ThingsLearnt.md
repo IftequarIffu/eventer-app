@@ -19,3 +19,5 @@
 - Move your API calls from the Page(page.tsx) to Component(EventsList.tsx) for better user experience and this also allows
   us to use `<Suspense></Suspense>` for those components and other components on the page can be shown directly.
 - If you make an API call twice on the same page, React sends only one API call. So, we need not worry about performance.
+- When navigating from one page to another using pagination, the Loading page is not visible, because Loading is done only
+  once. To show Loading for every page, add a `key` prop with unique value to the `<Suspense>` tag.
