@@ -1,6 +1,6 @@
 import React from "react";
 import EventCard from "./EventCard";
-import { getEventsFromCity } from "@/lib/utils";
+import { getEventsFromCity } from "@/lib/server-utils";
 import PaginationControls from "./PaginationControls";
 
 const EventsList = async ({ city, page }: { city: string; page: number }) => {

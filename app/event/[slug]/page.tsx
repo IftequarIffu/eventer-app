@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import H1 from "@/components/H1";
-import { getEventFromSlug } from "@/lib/utils";
+import { getEventFromSlug } from "@/lib/server-utils";
 
 export async function generateMetadata({
   params: { slug },
